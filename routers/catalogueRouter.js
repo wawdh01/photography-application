@@ -46,23 +46,15 @@ router.post('/add', auth, async(req, res)=> {
 router.get('/', async(req, res)=>{
     try {
         const catalogueId = req.query.catalogueId;
-        let isAdmin = false
-        if (res.locals.isLoggedIn) {
-            isAdmin = true
-        }
-        else {
-            isAdmin = false
-        }
         if (!catalogueId) {
             const catalogueData = await Catalogue.find();
-            res.render("components/catalogue", {isAdmin, catalogueData})
-            //res.status(200).send(catalogueData)
+            console.log(catalogueData)
+            res.render("components/catalogue", {catalogueData})
         }
         else {
             const catalogueData = await Catalogue.findOne({catalogueId: catalogueId})
             if (catalogueData) {
-                res.render("components/catalogue", {isAdmin, catalogueData})
-                //res.status(200).send(catalogueData)
+                res.render("components/catalogue", {catalogueData})
             }
             else {
                 res.status(404).json({errorMessage:"Unable to find the catalogue."})

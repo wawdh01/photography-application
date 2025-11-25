@@ -106,7 +106,7 @@ router.post("/login", async (req, res) => {
         //send a token in HTTP-cookie only
         res.cookie("token", token, {
             httpOnly: true,
-        }).render("home").send();
+        }).render("components/home");
 
     }
     catch(err) {

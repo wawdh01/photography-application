@@ -1,27 +1,21 @@
 <%- include ('../partials/header') %>
-    <% if (isLoggedIn) { %>
-        <% if (isAdmin) { %>
-            <button class="button">Add Catalogue</button>
-        <% } %>
-    <% } %>
     <div class="catalogue-container">
-        <div class="card">
-            <h1>Welcome</h1>
-        </div>
-        <div class="card">
-            <h1>Welcome 2</h1>
-        </div>
-        <div class="card">
-            <h1>ABCD</h1>
-        </div>
-        <div class="card">
-            <h1>AAAAA</h1>
-        </div>
-        <div class="card">
-            <h1>BBBBB</h1>
-        </div>
-        <div class="card">
-            <h1>GDFBFF</h1>
-        </div>
+        <% catalogueData.forEach(item => { %>
+            <div class="card">
+                <img style="width: 100%; aspect-ratio: 3 / 2;" src="<%= item.image_link %>">
+                <h3 style="margin: 5px;"><%= item.name %></h3>
+                <hr>
+                <p style="margin: 5px;"><%= item.description %></p>
+                <hr>
+                <table style="width: 100%; margin-top: 2%;">
+                    <tr>
+                        <td style="text-align: left;">Price : </td>
+                        <td style="text-align: right;"> <i class="fa-solid fa-indian-rupee-sign"></i> <%= item.price %></td>
+                    </tr>
+                </table>
+                <hr>
+                <button style="margin-top: 2%;">Add to Cart</button>
+            </div>
+        <% }) %>
     </div>
 <%- include ('../partials/footer') %>
