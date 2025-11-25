@@ -1,0 +1,29 @@
+<%- include ('partials/header') %>
+    <div class="card">
+        <h2>Welcome Back</h2>
+        <p>Sign up to capture memories ✨</p>
+        <form action="/auth/register" method="POST" class="login-form">
+            <div class="input-group">
+                <input type="email" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="input-group">
+                <input type="string" id="name" name="name" required placeholder="Enter your name">
+            </div>
+            <div class="input-group">
+                <input type="string" id="mbNum" name="mbNum" required placeholder="Enter your Mobile Number">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+            </div>
+            <div class="input-group">
+                <input type="string" id="passwordVerify" name="passwordVerify" required placeholder="Re Enter your password">
+            </div>
+            
+            <button type="submit" class="login-btn">Register</button>
+            <p class="signup-link">
+                Already have an account ? <a href="/auth/login" style="color: #ffba08;">Login</a>
+            </p>
+        </form>
+    </div>
+<%- include ('partials/footer') %>
+  

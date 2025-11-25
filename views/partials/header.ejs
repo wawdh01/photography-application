@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/stylesheets/main.css">
+    <title>Photograpy Application</title>
+    <script>
+        // Auto-hide flash messages after 3 seconds
+        const flashes = document.querySelectorAll('.flash');
+        flashes.forEach(flash => {
+            setTimeout(() => {
+                flash.style.transition = 'opacity 0.5s, transform 0.5s';
+                flash.style.opacity = '0';
+                flash.style.transform = 'translateY(-20px)';
+                setTimeout(() => flash.remove(), 500);
+            }, 3000); // 3 seconds
+        });
+    </script>
+</head>
+
+<body>
+    <header class="photo-header">
+        <nav class="navbar">
+
+            <!-- Logo -->
+            <div class="logo">
+                <img src="/images/camera-icon.jpg" alt="camera" />
+                <span>Photograpy</span>
+            </div>
+
+            <!-- Hamburger -->
+            <input type="checkbox" id="menu-toggle">
+            <label for="menu-toggle" class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <!-- Nav Links -->
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/catalogue">Catalogue</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <% if (isLoggedIn) { %>
+                    <li><a href="/order">Order</a></li>
+                    <li><a href="/cart">Cart</a></li>
+                    <li><a href="/profile">Profile</a></li>
+                    <li><a href="/auth/logout">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/auth/login">Login</a></li>
+                    <li><a href="/auth/register">Register</a></li>
+                <% } %>
+            </ul>
+
+        </nav>
+    </header>
+    <div class="flash">
+        <% if(error && error.length > 0 ){%>
+            <div class="flash-success" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0 ){ %>
+            <div class="flash-error" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
