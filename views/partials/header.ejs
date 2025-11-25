@@ -60,12 +60,12 @@
     </header>
     <div class="flash">
         <% if(error && error.length > 0 ){%>
-            <div class="flash-success" role="alert">
+            <div class="flash-error" role="alert">
                 <%= error %>
             </div>
         <% } %>
         <% if(success && success.length > 0 ){ %>
-            <div class="flash-error" role="alert">
+            <div class="flash-success" role="alert">
                 <%= success %>
             </div>
         <% } %>

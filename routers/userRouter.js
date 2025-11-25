@@ -7,7 +7,12 @@ const auth = require('../middleware/auth');
 
 
 router.get("/login", async(req, res)=>{
-    res.render("login")
+    if (res.locals.isLoggedIn == true) {
+        res.redirect("/")
+    }
+    else {
+        res.render("login")
+    }
 })
 
 router.get("/register", async(req, res)=>{
@@ -19,24 +24,24 @@ router.post("/register", async (req, res)=> {
         const {email, name, mbNum, password, passwordVerify} = req.body;
         if (!email || !name || !mbNum || !password || !passwordVerify) {
             req.flash("error", "Please enter all the Required fields.")
-            return res.redirect("register")
+            return res.redirect("/auth/register")
         }
         if (password.length <= 6) {
             req.flash("error", "Please enter a password more than 6 characters.")
-            return res.redirect("register")
+            return res.redirect("/auth/register")
         }
         if (password != passwordVerify) {
             req.flash("error", "Password and Re-enter Password doesn't Match.")
-            return res.redirect("register")
+            return res.redirect("/auth/register")
         }
         if (mbNum.toString().length !== 10) {
             req.flash("error", "Mobile Number should be 10 digit.")
-            return res.redirect("register")
+            return res.redirect("/auth/register")
         }
         const existingUser = await Login.findOne({email});
         if (existingUser) {
             req.flash("error", "This Email already Exists.")
-            return res.redirect("register")
+            return res.redirect("/auth/register")
         }
         const hashPassword = password;
         //add a new user
@@ -68,8 +73,8 @@ router.post("/register", async (req, res)=> {
               console.log('Email sent: ' + info.response);
             }
           });
-        res.json(savedUser);
-        res.redirect("auth/login")
+        req.flash("success", "Your account has been created and sent an email.");
+        res.redirect("/auth/login")
     }
     catch(err) {
         console.error(err);
@@ -106,7 +111,8 @@ router.post("/login", async (req, res) => {
         //send a token in HTTP-cookie only
         res.cookie("token", token, {
             httpOnly: true,
-        }).render("components/home");
+        });
+        res.redirect("/");
 
     }
     catch(err) {
