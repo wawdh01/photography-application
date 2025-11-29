@@ -244,7 +244,7 @@ body {
 /*********** Auth Container ***********/
 
 .card {
-  width: 80%;
+  width: 100%;
   padding: 20px;
   margin: 20px auto;
   background: rgba(0, 0, 0, 0.5);
@@ -348,8 +348,10 @@ button {
 /*************** Catalogue Container *****************/
 .catalogue-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
+  gap: 20px;
+  /* Default for small screens */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 400px));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 400px));
   padding: 10px;
-  max-width: 500px;
+  justify-content: center;
 }

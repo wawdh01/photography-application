@@ -37,7 +37,7 @@ router.get('/createOrder', auth, async(req, res)=>{
                 payment_status: "Pending"
             });
 
-            const savedOrder = await Order.save();
+            const savedOrder = await newOrder.save();
 
             var transporter = nodemailer.createTransport({
                 service: 'gmail',

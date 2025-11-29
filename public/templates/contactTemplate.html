@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Details</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f6f6f6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: #ffffff;
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e2e2e2;
+        }
+
+        .header {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .header-img {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .details {
+            line-height: 1.6;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .value {
+            color: green;
+            font-weight: bold;
+        }
+
+        .password {
+            color: red;
+            font-weight: bold;
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <img src="cid:headerImage" alt="Header Image" class="header-img">
+    <br><br>
+    <div class="header">Your Contact Details</div>
+
+    <div class="details">
+        Hello {{name}},<br><br>
+        Thank you for registering with the <b>Photography Management System</b>.<br><br>
+
+        Your submitted details are below:<br><br>
+
+        <div><span class="label">Mobile Number:</span> <span class="value">{{mobile}}</span></div>
+        <div><span class="label">Message:</span> <span class="password">{{message}}</span></div>
+
+        <br><br>
+        We will get in touch with you on your phone number - {{mobile}}
+        <br><br>
+        <u>This is an system generated email, please do not reply.</u>
+    </div>
+
+    <div class="footer">
+        Regards,<br>
+        <b>Photography Team</b>
+    </div>
+</div>
+
+</body>
+</html>

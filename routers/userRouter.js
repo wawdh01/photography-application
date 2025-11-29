@@ -4,7 +4,9 @@ const Login = require('../models/userModel');
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const auth = require('../middleware/auth');
-
+const fs = require('fs');
+const path = require('path');
+const Handlebars = require('handlebars');
 
 router.get("/login", async(req, res)=>{
     if (res.locals.isLoggedIn == true) {
@@ -52,8 +54,18 @@ router.post("/register", async (req, res)=> {
 
         const savedUser = await newUser.save();
 
+        //create HTML template
+        let htmlTemplate = fs.readFileSync(path.join(__dirname, '../public/templates/registerTemplate.html'), 'utf8');
+        const template = Handlebars.compile(htmlTemplate)
+        
+        const htmlData = template({
+            username: name,
+            year: new Date().getFullYear(),
+            dashboard_link: process.env.HOST_NAME
+        })
+
         var transporter = nodemailer.createTransport({
-            service: 'gmail',
+            service: 'gmail', 
             auth: {
               user: process.env.EMAIL,
               pass: process.env.PASSWORD
@@ -63,7 +75,14 @@ router.post("/register", async (req, res)=> {
             from: process.env.EMAIL,
             to: email,
             subject: 'Welcome to Photography System',
-            html: "<p>Dear User,<br>Welcome to this Photography Management System.<br>Your Details are as Follows:<br>Name:<b style='color: green;'>"+ name +"</b><br>Mobile Number:<b style='color: green;'>"+ mbNum +"</b><br>Password:<b style='color: red;'>"+ password +"</b><br><br><br><br><br>Thanks,<br>Apartment Management System<br></p>"
+            html: htmlData,
+            attachments: [
+                {
+                    filename: 'registerImage.jpg',
+                    path: path.join(__dirname, '../public/images/registerImage.jpeg'), // path to your image
+                    cid: 'registerImage' // same CID as in <img src="cid:headerImage">
+                }
+            ]
           };
           
           transporter.sendMail(mailOptions, function(error, info){

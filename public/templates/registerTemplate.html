@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thank You for Registering</title>
+</head>
+<body style="margin:0; padding:0; background-color:#111; font-family:Arial, sans-serif;">
+
+    <!-- Wrapper -->
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#111">
+        <tr>
+            <td align="center" style="padding: 40px 10px;">
+
+                <!-- Email Card -->
+                <table width="600" border="0" cellspacing="0" cellpadding="0" 
+                       style="background:#000; border-radius:10px; overflow:hidden; box-shadow:0 0 15px rgba(0,0,0,0.4);">
+
+                    <!-- Hero Image (Photography Style) -->
+                    <tr>
+                        <td>
+                            <img src="cid:registerImage" 
+                                 width="600" alt="Photography Header"
+                                 style="display:block; width:100%; height:auto; border:none;">
+                        </td>
+                    </tr>
+
+                    <!-- Title -->
+                    <tr>
+                        <td align="center" style="padding: 30px 30px 10px 30px;">
+                            <h1 style="margin:0; font-size:30px; color:#ffffff; font-weight:300; letter-spacing:2px;">
+                                Welcome, {{username}}!
+                            </h1>
+                        </td>
+                    </tr>
+
+                    <!-- Subtitle -->
+                    <tr>
+                        <td align="center" style="padding: 0 30px; color:#bbbbbb; font-size:16px; line-height:1.6;">
+                            <p style="margin:0;">
+                                Thank you for registering with us. Your creative journey begins now.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- Body -->
+                    <tr>
+                        <td style="padding: 25px 30px 10px 30px; color:#dddddd; font-size:15px; line-height:1.7;">
+                            <p style="margin:0;">
+                                As a member of our photography community, you can now explore inspiring galleries, 
+                                upload your own work, and connect with talented creators from around the world.
+                            </p>
+                        </td>
+                    </tr>
+
+                    <!-- CTA Button -->
+                    <tr>
+                        <td align="center" style="padding: 25px 30px;">
+                            <a href="{{dashboard_link}}" 
+                               style="background:#ffffff; color:#000000; padding:12px 30px;
+                                      text-decoration:none; font-size:16px; font-weight:bold;
+                                      border-radius:5px; letter-spacing:1px;">
+                                Visit Your Dashboard
+                            </a>
+                        </td>
+                    </tr>
+
+                    <!-- Divider -->
+                    <tr>
+                        <td align="center" style="padding: 10px 30px;">
+                            <hr style="border:0; height:1px; background:#333; margin:20px 0;">
+                        </td>
+                    </tr>
+
+                    <!-- Footer Text -->
+                    <tr>
+                        <td align="center" style="padding: 0 30px 40px 30px; color:#777; font-size:13px; line-height:1.6;">
+                            <p style="margin:0;">
+                                Capture moments. Tell stories. Share your vision. ✨💫 
+                                We're excited to see what you create.
+                            </p>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <!-- Footer -->
+                <table width="600" border="0" cellspacing="0" cellpadding="0" style="margin-top:25px;">
+                    <tr>
+                        <td align="center" style="font-size:13px; color:#555; padding:15px; font-family:Arial, sans-serif;">
+                            © {{year}} Your Photography Platform • All Rights Reserved
+                        </td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+    </table>
+
+</body>
+</html>
